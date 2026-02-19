@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creek Ocean Construction | Building Your Vision Since 2018</title>
+  <meta name="description" content="Creek Ocean Construction — Premium remodelling, cabinetry, commercial renovations & custom carpentry in Halifax, Nova Scotia. Craftsmanship runs deep.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET & VARIABLES ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a;
+      --charcoal: #1a1a1a;
+      --dark: #222222;
+      --gray-900: #2d2d2d;
+      --gray-700: #555555;
+      --gray-500: #888888;
+      --gray-300: #cccccc;
+      --gray-100: #f2f2f2;
+      --white: #ffffff;
+      --accent: #c8a45e;
+      --accent-light: #dfc07a;
+      --accent-dark: #a88a3e;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 3rem; }
+    section { padding: 8rem 0; }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ─── LOADER ─── */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s;
+    }
+    .loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-inner {
+      text-align: center;
+    }
+    .loader-text {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--white);
+      overflow: hidden;
+    }
+    .loader-bar {
+      width: 120px;
+      height: 1px;
+      background: var(--gray-700);
+      margin: 1.5rem auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .loader-bar::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; height: 100%;
+      width: 0;
+      background: var(--accent);
+      animation: loaderFill 1.8s ease forwards;
+    }
+    @keyframes loaderFill { to { width: 100%; } }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.8rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(200,164,94,0.1);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      padding: 0.7rem 1.8rem;
+      border: 1px solid var(--accent);
+      color: var(--accent) !important;
+      transition: all 0.3s !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 2px;
+    }
+    .nav-cta:hover {
+      background: var(--accent) !important;
+      color: var(--black) !important;
+    }
+
+    /* Mobile menu */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .nav-hamburger span {
+      width: 28px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    .nav-hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 0 6rem 0;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/creek-restaurant.jpg') center/cover no-repeat;
+      transform: scale(1.05);
+      transition: transform 8s ease-out;
+    }
+    .hero.loaded .hero-bg { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 50%, transparent 100%),
+        linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 40%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 0 3rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(200,164,94,0.3);
+      border-radius: 2px;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      background: rgba(200,164,94,0.05);
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--gray-300);
+      line-height: 1.8;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2.2rem;
+      background: var(--accent);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(200,164,94,0.3);
+    }
+    .btn-primary svg { width: 16px; height: 16px; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2.2rem;
+      border: 1px solid var(--gray-700);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.3s;
+      background: transparent;
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Hero stats ticker */
+    .hero-stats {
+      position: absolute;
+      bottom: 6rem;
+      right: 3rem;
+      z-index: 2;
+      display: flex;
+      gap: 3rem;
+    }
+    .hero-stat {
+      text-align: right;
+    }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-top: 0.5rem;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scroll-indicator span {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--gray-700);
+      position: relative;
+      overflow: hidden;
+    }
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      width: 100%;
+      height: 50%;
+      background: var(--accent);
+      animation: scrollDown 1.8s ease infinite;
+    }
+    @keyframes scrollDown {
+      0% { top: -50%; }
+      100% { top: 100%; }
+    }
+
+    /* ─── MARQUEE TRUST BAR ─── */
+    .trust-bar {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 1.2rem 0;
+      overflow: hidden;
+    }
+    .marquee {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0 3rem;
+      white-space: nowrap;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+    .marquee-item .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      background: var(--black);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-images {
+      position: relative;
+      height: 600px;
+    }
+    .about-img-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 75%;
+      height: 80%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 55%;
+      height: 55%;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 5px solid var(--black);
+    }
+    .about-gold-frame {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 50%;
+      height: 40%;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      opacity: 0.4;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--gray-300);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .about-highlight {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .about-highlight-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(200,164,94,0.3);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+    .about-highlight-icon svg { width: 18px; height: 18px; }
+    .about-highlight h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.5px;
+    }
+    .about-highlight span {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      font-weight: 300;
+    }
+
+    /* ─── SERVICES ─── */
+    .services {
+      background: var(--charcoal);
+      position: relative;
+    }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+    .services-header-right {
+      max-width: 400px;
+      text-align: right;
+    }
+    .services-header-right p {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--dark);
+      padding: 3rem 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      border: 1px solid transparent;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      border-color: rgba(200,164,94,0.15);
+      background: rgba(200,164,94,0.03);
+      transform: translateY(-5px);
+    }
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: rgba(200,164,94,0.1);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(200,164,94,0.3);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      transition: all 0.3s;
+    }
+    .service-card:hover .service-icon {
+      background: var(--accent);
+      color: var(--black);
+    }
+    .service-icon svg { width: 22px; height: 22px; }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .service-card .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s;
+    }
+    .service-card:hover .learn-more {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .learn-more svg { width: 14px; height: 14px; }
+
+    /* ─── PROJECTS ─── */
+    .projects {
+      background: var(--black);
+    }
+    .projects-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 4rem;
+    }
+    .projects-header .section-label {
+      justify-content: center;
+    }
+    .projects-header .section-label::before { display: none; }
+    .projects-header .section-label::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 400px 400px;
+      gap: 6px;
+    }
+    .project-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .project-item:nth-child(1) { grid-column: 1 / 8; }
+    .project-item:nth-child(2) { grid-column: 8 / 13; }
+    .project-item:nth-child(3) { grid-column: 1 / 5; }
+    .project-item:nth-child(4) { grid-column: 5 / 9; }
+    .project-item:nth-child(5) { grid-column: 9 / 13; }
+    .project-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      filter: brightness(0.7);
+    }
+    .project-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.5);
+    }
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      transition: all 0.4s;
+    }
+    .project-tag {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      transition: transform 0.4s;
+    }
+    .project-item:hover .project-name { transform: translateY(-5px); }
+    .project-arrow {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translate(-10px, 10px);
+      transition: all 0.4s;
+      color: var(--white);
+    }
+    .project-item:hover .project-arrow {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    .project-arrow svg { width: 16px; height: 16px; }
+
+    /* ─── STATS BAND ─── */
+    .stats-band {
+      background: var(--accent);
+      padding: 4rem 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(10,10,10,0.6);
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* ─── CAREERS ─── */
+    .careers {
+      background: var(--charcoal);
+    }
+    .careers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .careers-intro p {
+      font-size: 1rem;
+      color: var(--gray-300);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .careers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .career-card {
+      background: var(--dark);
+      padding: 2rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 2rem;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .career-card:hover {
+      border-color: rgba(200,164,94,0.2);
+      background: rgba(200,164,94,0.03);
+    }
+    .career-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+    .career-type {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+    .career-arrow {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gray-700);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-500);
+      transition: all 0.3s;
+    }
+    .career-card:hover .career-arrow {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .career-arrow svg { width: 14px; height: 14px; }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      background: var(--black);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+    }
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(200,164,94,0.2);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+    .contact-detail-icon svg { width: 16px; height: 16px; }
+    .contact-detail-text h4 {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+    .contact-detail-text p {
+      color: var(--gray-300);
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+    .contact-detail-text a {
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+    .contact-detail-text a:hover { color: var(--accent-light); }
+    .contact-form { }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--gray-700);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+    .form-group textarea {
+      height: 140px;
+      resize: vertical;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--accent);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .form-submit:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(200,164,94,0.2);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      padding: 5rem 0 3rem;
+    }
+    .footer-brand p {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      font-weight: 300;
+      max-width: 320px;
+    }
+    .footer-col h4 {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .footer-col li a {
+      font-size: 0.88rem;
+      color: var(--gray-500);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+    .footer-col li a:hover { color: var(--accent); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: var(--gray-700);
+      font-weight: 300;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-socials a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-500);
+      transition: all 0.3s;
+    }
+    .footer-socials a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .footer-socials svg { width: 14px; height: 14px; }
+
+    /* ─── SISTER COMPANY ─── */
+    .sister {
+      padding: 6rem 0;
+    }
+    .sister-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--charcoal);
+      border: 1px solid var(--gray-900);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .sister-card:hover { border-color: rgba(200,164,94,0.2); }
+    .sister-img {
+      height: 100%;
+      min-height: 350px;
+    }
+    .sister-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .sister-content {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sister-content .section-label { margin-bottom: 1rem; }
+    .sister-content h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .sister-content p {
+      color: var(--gray-500);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) {
+      .sister-card { grid-template-columns: 1fr; }
+      .sister-img { min-height: 250px; }
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .container { padding: 0 2rem; }
+      nav { padding: 1.5rem 2rem; }
+      nav.scrolled { padding: 1rem 2rem; }
+      .hero-content { padding: 0 2rem; }
+      .hero-stats { right: 2rem; gap: 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-images { height: 450px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .project-item:nth-child(1) { grid-column: 1 / 3; }
+      .project-item:nth-child(2) { grid-column: 1 / 2; }
+      .project-item:nth-child(3) { grid-column: 2 / 3; }
+      .project-item:nth-child(4) { grid-column: 1 / 2; }
+      .project-item:nth-child(5) { grid-column: 2 / 3; }
+      .project-item { min-height: 300px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .careers-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .services-header-right { text-align: left; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 5rem 0; }
+      .nav-links { display: none; }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: var(--black);
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 999;
+      }
+      .nav-links.active a { font-size: 1.2rem; }
+      .nav-hamburger { display: flex; }
+      .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+      .hero-stats { display: none; }
+      .hero-content { padding: 0 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .project-item:nth-child(n) { grid-column: 1; }
+      .project-item { min-height: 250px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .career-card { grid-template-columns: 1fr auto; }
+      .career-type { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .about-highlights { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-text">CREEK</div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="images/logo.png" alt="Creek Ocean Construction" style="height:40px;"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="https://kp-glass.netlify.app" target="_blank">KP Glass</a></li>
+    <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <div class="hero-badge">Building Your Vision Since 2018</div>
+    <h1>Where <em>craftsmanship</em><br>meets precision</h1>
+    <p class="hero-desc">Premium remodelling, cabinetry, and custom carpentry for residential and commercial spaces across Nova Scotia.</p>
+    <div class="hero-actions">
+      <a href="mailto:admin@creek.construction?subject=Project%20Inquiry" class="btn-primary">
+        Start A Project
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#projects" class="btn-secondary">View Our Work</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat reveal reveal-delay-1">
+      <div class="hero-stat-num" data-count="7">0</div>
+      <div class="hero-stat-label">Years Building</div>
+    </div>
+    <div class="hero-stat reveal reveal-delay-2">
+      <div class="hero-stat-num" data-count="150">0</div>
+      <div class="hero-stat-label">Projects Delivered</div>
+    </div>
+    <div class="hero-stat reveal reveal-delay-3">
+      <div class="hero-stat-num" data-count="100">0</div>
+      <div class="hero-stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+<div class="trust-bar">
+  <div class="marquee">
+    <div class="marquee-item"><span class="dot"></span> Licensed &amp; Insured</div>
+    <div class="marquee-item"><span class="dot"></span> Residential &amp; Commercial</div>
+    <div class="marquee-item"><span class="dot"></span> Custom Cabinetry</div>
+    <div class="marquee-item"><span class="dot"></span> Halifax &amp; HRM</div>
+    <div class="marquee-item"><span class="dot"></span> Quality Craftsmanship</div>
+    <div class="marquee-item"><span class="dot"></span> Since 2018</div>
+    <div class="marquee-item"><span class="dot"></span> Licensed &amp; Insured</div>
+    <div class="marquee-item"><span class="dot"></span> Residential &amp; Commercial</div>
+    <div class="marquee-item"><span class="dot"></span> Custom Cabinetry</div>
+    <div class="marquee-item"><span class="dot"></span> Halifax &amp; HRM</div>
+    <div class="marquee-item"><span class="dot"></span> Quality Craftsmanship</div>
+    <div class="marquee-item"><span class="dot"></span> Since 2018</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal">
+        <div class="about-gold-frame"></div>
+        <img class="about-img-main" src="images/creek-bar-countertop.jpg" alt="Creek Ocean Construction - Custom bar countertop with tile backsplash">
+        <img class="about-img-accent" src="images/creek-kitchen-cabinetry.jpg" alt="Creek Ocean Construction - Custom kitchen cabinetry">
+      </div>
+      <div class="about-text">
+        <div class="section-label reveal">About Creek</div>
+        <h2 class="section-title reveal reveal-delay-1">Craftsmanship runs <em>deep</em><br>in our roots</h2>
+        <p class="reveal reveal-delay-2">What started as a small, passionate team of skilled tradespeople has become a trusted name in cabinetry, remodelling, and carpentry across Nova Scotia.</p>
+        <p class="reveal reveal-delay-2">Precision, creativity, and an unwavering commitment to excellence define every project we touch. We don't just build spaces — we create environments where people feel at home.</p>
+        <div class="about-highlights reveal reveal-delay-3">
+          <div class="about-highlight">
+            <div class="about-highlight-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h4>Quality Guaranteed</h4>
+              <span>Every detail matters</span>
+            </div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h4>On-Time Delivery</h4>
+              <span>Deadlines we honour</span>
+            </div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <h4>Skilled Team</h4>
+              <span>Expert tradespeople</span>
+            </div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h4>Local Experts</h4>
+              <span>Proudly Nova Scotian</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-label reveal">What We Do</div>
+        <h2 class="section-title reveal reveal-delay-1">Expertise across<br>every <em>discipline</em></h2>
+      </div>
+      <div class="services-header-right reveal reveal-delay-2">
+        <p>From concept to completion, we bring your vision to life with precision craftsmanship and meticulous attention to every detail.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        </div>
+        <h3>Remodelling</h3>
+        <p>Full-scale renovations and upgrades that breathe new life into kitchens, bathrooms, living and working spaces.</p>
+        <span class="learn-more">Learn More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <div class="service-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.15c0 .415.336.75.75.75z"/></svg>
+        </div>
+        <h3>Commercial Renovations</h3>
+        <p>Expert craftsmanship for office spaces, retail stores and restaurants, creating functional and stylish interiors.</p>
+        <span class="learn-more">Learn More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <div class="service-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-1.085.768-1.99 1.79-2.199"/></svg>
+        </div>
+        <h3>Cabinetry</h3>
+        <p>Tailored storage solutions designed to maximize space and enhance aesthetics, from kitchen cabinets to built-in shelving.</p>
+        <span class="learn-more">Learn More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">04</div>
+        <div class="service-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11.42 15.17l-5.303-3.032a.75.75 0 000 1.299l5.303 3.032a.75.75 0 00.84 0l5.303-3.032a.75.75 0 000-1.299l-5.303-3.032a.75.75 0 00-.84 0z"/><path d="M11.42 15.17l-5.303-3.032a.75.75 0 000 1.299l5.303 3.032a.75.75 0 00.84 0l5.303-3.032a.75.75 0 000-1.299l-5.303-3.032a.75.75 0 00-.84 0z" transform="translate(0,-4)"/></svg>
+        </div>
+        <h3>Custom Carpentry</h3>
+        <p>Unique, handcrafted woodwork — from accent walls to detailed trims and moldings, made to suit your style.</p>
+        <span class="learn-more">Learn More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="projects-header">
+      <div class="section-label reveal">Featured Projects</div>
+      <h2 class="section-title reveal reveal-delay-1">Work that speaks<br>for <em>itself</em></h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-item reveal">
+        <img src="images/alton-flex.jpg" alt="Alton Flex Co-Working Space">
+        <div class="project-overlay">
+          <span class="project-tag">Commercial</span>
+          <h3 class="project-name">Alton Flex Co-Working Space</h3>
+        </div>
+        <div class="project-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+      </div>
+      <div class="project-item reveal reveal-delay-1">
+        <img src="images/halifax-shopping-centre.jpg" alt="Halifax Shopping Centre">
+        <div class="project-overlay">
+          <span class="project-tag">Retail</span>
+          <h3 class="project-name">Halifax Shopping Centre</h3>
+        </div>
+        <div class="project-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+      </div>
+      <div class="project-item reveal reveal-delay-1">
+        <img src="images/nslc-the-port.jpg" alt="NSLC The Port">
+        <div class="project-overlay">
+          <span class="project-tag">Hospitality</span>
+          <h3 class="project-name">NSLC The Port</h3>
+        </div>
+        <div class="project-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+      </div>
+      <div class="project-item reveal reveal-delay-2">
+        <img src="images/banook-boat-club.jpg" alt="Banook Boat Club">
+        <div class="project-overlay">
+          <span class="project-tag">Recreation</span>
+          <h3 class="project-name">Banook Boat Club</h3>
+        </div>
+        <div class="project-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+      </div>
+      <div class="project-item reveal reveal-delay-3">
+        <img src="images/salon-brillante.jpg" alt="Halifax Shopping Center Salon">
+        <div class="project-overlay">
+          <span class="project-tag">Salon</span>
+          <h3 class="project-name">Halifax Shopping Center Salon</h3>
+        </div>
+        <div class="project-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num" data-count="7">0</div>
+        <div class="stat-label">Years in Business</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num" data-count="150">0</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num" data-count="40">0</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num" data-count="100">0</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAREERS -->
+<section class="careers" id="careers">
+  <div class="container">
+    <div class="careers-grid">
+      <div class="careers-intro">
+        <div class="section-label reveal">Careers</div>
+        <h2 class="section-title reveal reveal-delay-1">Build your future<br>with <em>Creek</em></h2>
+        <p class="reveal reveal-delay-2">We're growing and looking for talented tradespeople who share our commitment to quality and craftsmanship. Join a team that values precision, creativity, and pride in every project.</p>
+        <a href="mailto:career@creek.construction" class="btn-primary reveal reveal-delay-3">
+          Send Your Resume
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="careers-list">
+        <a href="careers.html#cabinet-maker" class="career-card reveal">
+          <div>
+            <div class="career-title">Cabinet Maker</div>
+            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">Custom cabinetry &amp; high-end finishes</div>
+          </div>
+          <div class="career-type">Full-Time</div>
+          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+        </a>
+        <a href="careers.html#site-supervisor" class="career-card reveal reveal-delay-1">
+          <div>
+            <div class="career-title">Site Supervisor</div>
+            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">General contracting &amp; crew leadership</div>
+          </div>
+          <div class="career-type">Full-Time</div>
+          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+        </a>
+        <a href="careers.html#project-coordinator" class="career-card reveal reveal-delay-2">
+          <div>
+            <div class="career-title">Project Coordinator</div>
+            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">Cabinetry &amp; millwork coordination</div>
+          </div>
+          <div class="career-type">Full-Time</div>
+          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+        </a>
+        <a href="careers.html#carpenter" class="career-card reveal reveal-delay-3">
+          <div>
+            <div class="career-title">Carpenters</div>
+            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">Truro &amp; Colchester County — 5+ years exp.</div>
+          </div>
+          <div class="career-type">Full-Time</div>
+          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SISTER COMPANY -->
+<section class="sister" id="sister">
+  <div class="container">
+    <div class="sister-card reveal">
+      <div class="sister-img">
+        <img src="images/kp-glass-facade.jpg" alt="KP Glass & Aluminum">
+      </div>
+      <div class="sister-content">
+        <div class="section-label">Sister Company</div>
+        <h3>KP Glass & Aluminum</h3>
+        <p>Our sister company specializes in expert glass glazing, aluminum fabrication, and custom door & window solutions for residential, commercial, and industrial spaces across Nova Scotia.</p>
+        <a href="https://kp-glass.netlify.app" target="_blank" class="btn-secondary" style="width:fit-content;">
+          Visit KP Glass
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label reveal">Contact</div>
+        <h2 class="section-title reveal reveal-delay-1">Let's build<br>something <em>together</em></h2>
+        <div class="contact-details reveal reveal-delay-2">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Address</h4>
+              <p>79 Thorne Avenue<br>Dartmouth, NS, B3B 0A4</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Phone</h4>
+              <p><a href="tel:9024060525">902-406-0525</a></p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4>Email</h4>
+              <p><a href="mailto:admin@creek.construction">admin@creek.construction</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-3" style="display:flex; gap:1rem;">
+          <a href="https://www.facebook.com/profile.php?id=61555688853587" target="_blank" class="footer-socials" style="margin:0;">
+            <span style="width:40px;height:40px;border:1px solid rgba(200,164,94,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);transition:all 0.3s;">
+              <svg fill="currentColor" viewBox="0 0 24 24" width="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </span>
+          </a>
+          <a href="https://linkedin.com/company/fabtek-atlantic-group" target="_blank">
+            <span style="width:40px;height:40px;border:1px solid rgba(200,164,94,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);transition:all 0.3s;">
+              <svg fill="currentColor" viewBox="0 0 24 24" width="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email Address" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="tel" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+              <select>
+                <option value="" disabled selected>Project Type</option>
+                <option>Remodelling</option>
+                <option>Commercial Renovation</option>
+                <option>Cabinetry</option>
+                <option>Custom Carpentry</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Project Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo"><img src="images/logo.png" alt="Creek Ocean Construction" style="height:40px;"></div>
+        <p>Premium remodelling, cabinetry, and custom carpentry for residential and commercial spaces across Nova Scotia. Craftsmanship runs deep in our roots.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Remodelling</a></li>
+          <li><a href="#services">Commercial</a></li>
+          <li><a href="#services">Cabinetry</a></li>
+          <li><a href="#services">Carpentry</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="https://kp-glass.netlify.app" target="_blank">KP Glass &amp; Aluminum</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="tel:9024060525">902-406-0525</a></li>
+          <li><a href="mailto:admin@creek.construction">admin@creek.construction</a></li>
+          <li><a href="#">79 Thorne Avenue<br>Dartmouth, NS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Creek Ocean Construction. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/profile.php?id=61555688853587" target="_blank" aria-label="Facebook">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/fabtek-atlantic-group" target="_blank" aria-label="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.querySelector('.hero').classList.add('loaded');
+    }, 2000);
+  });
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Counter animation
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        const duration = 2000;
+        const start = performance.now();
+        const suffix = el.closest('.hero-stat, .stat-item') && (target === 100) ? '%' : '+';
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(eased * target);
+          el.textContent = current + (progress >= 1 ? suffix : '');
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+  // Smooth parallax on hero
+  window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero-bg');
+    if (hero) {
+      const scrolled = window.scrollY;
+      hero.style.transform = `scale(${1.05 - scrolled * 0.0001}) translateY(${scrolled * 0.3}px)`;
+    }
+  });
+</script>
+</body>
+</html>
