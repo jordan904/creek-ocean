@@ -125,12 +125,17 @@
 
     isSending = true;
 
+    var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    var timeoutId = controller ? setTimeout(function () { controller.abort(); }, 25000) : null;
+
     fetch(CHAT_API_BASE + "/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: messages }),
+      signal: controller ? controller.signal : undefined,
     })
       .then(function (res) {
+        if (timeoutId) clearTimeout(timeoutId);
         if (!res.ok) throw new Error("bad response");
         return res.json();
       })
@@ -142,6 +147,7 @@
         appendBubble(messagesEl, "assistant", reply);
       })
       .catch(function () {
+        if (timeoutId) clearTimeout(timeoutId);
         var typingEl = document.getElementById("creek-chat-typing");
         if (typingEl) typingEl.remove();
         appendBubble(
