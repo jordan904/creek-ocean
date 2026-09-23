@@ -263,11 +263,16 @@
   margin-top: 0.6rem;
 }
 
-.creek-chat-alt-action button {
+.creek-chat-alt-action button,
+button.creek-chat-alt-action {
   background: none;
+  border: none;
   color: var(--accent-light);
   text-decoration: underline;
   font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
 }
 
 /* ─── Lead form ─── */
