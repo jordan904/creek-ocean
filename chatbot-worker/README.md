@@ -46,6 +46,19 @@ In `../chatbot/chatbot.js`, set `CHAT_API_BASE` to that Worker URL.
   routes to the careers Web3Forms key for resume/career inquiries, otherwise
   the general key.
 
+## Conversation logging
+Each chat conversation is saved to the `CHAT_LOGS` KV binding (namespace
+`CREEK_CHAT_LOGS`) under `session:<id>`, where the id is a random UUID the
+widget keeps in `sessionStorage`. Entries expire after 90 days. This matches
+what `privacy-policy.html` tells visitors, so keep the two in sync.
+
+To read logs, always pass `--remote` (without it, wrangler reads a local
+simulated store and shows nothing):
+```bash
+npx wrangler kv key list --namespace-id ae80fbd4452e4661be246af6e1874ed9 --remote
+npx wrangler kv key get --namespace-id ae80fbd4452e4661be246af6e1874ed9 --remote "session:<id>"
+```
+
 ## Notes
 - `ALLOWED_ORIGINS` in `wrangler.toml` controls CORS — update it if the live
   domain changes.

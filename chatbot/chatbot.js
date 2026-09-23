@@ -19,6 +19,19 @@
   var hasOpenedBefore = false;
   var isSending = false;
 
+  function getSessionId() {
+    try {
+      var id = sessionStorage.getItem("creekChatSessionId");
+      if (!id) {
+        id = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+        sessionStorage.setItem("creekChatSessionId", id);
+      }
+      return id;
+    } catch (e) {
+      return "";
+    }
+  }
+
   var root = document.createElement("div");
   root.innerHTML =
     '<button id="creek-chat-toggle" aria-expanded="false" aria-controls="creek-chat-panel" aria-label="Chat with Creek Assistant">' +
@@ -131,7 +144,7 @@
     fetch(CHAT_API_BASE + "/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: messages }),
+      body: JSON.stringify({ messages: messages, sessionId: getSessionId() }),
       signal: controller ? controller.signal : undefined,
     })
       .then(function (res) {

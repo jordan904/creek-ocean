@@ -7,3 +7,7 @@ ALLOWED_ORIGINS = "https://creek.construction,https://jordan904.github.io,http:/
 
 [ai]
 binding = "AI"
+
+[[kv_namespaces]]
+binding = "CHAT_LOGS"
+id = "ae80fbd4452e4661be246af6e1874ed9"
