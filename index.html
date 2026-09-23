@@ -204,11 +204,24 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('images/creek-restaurant.jpg') center/cover no-repeat;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transform: scale(1.05);
       transition: transform 8s ease-out;
     }
+    .hero-video { z-index: 0; }
+    .hero-photo { z-index: 0; display: none; }
     .hero.loaded .hero-bg { transform: scale(1); }
+    @media (max-width: 768px) {
+      .hero-video { display: none; }
+      .hero-photo { display: block; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { display: none; }
+      .hero-photo { display: block; }
+      .hero-bg { transition: none; transform: none; }
+    }
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -626,6 +639,44 @@
       height: 1px;
       background: var(--accent);
     }
+    /* ─── SERVICES VIDEO ─── */
+    .services-video {
+      margin-top: 5rem;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--gray-900);
+      background: var(--charcoal);
+    }
+    .services-video video,
+    .services-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .services-video-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.7rem 1.2rem;
+      background: rgba(10,10,10,0.75);
+      border-left: 2px solid var(--accent);
+      backdrop-filter: blur(6px);
+      pointer-events: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .services-video video { display: none; }
+      .services-video img.services-video-poster { display: block; }
+    }
+    .services-video img.services-video-poster { display: none; }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -700,6 +751,110 @@
     }
     .project-arrow svg { width: 16px; height: 16px; }
 
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      background: var(--charcoal);
+      border-top: 1px solid var(--gray-900);
+      border-bottom: 1px solid var(--gray-900);
+    }
+    .testimonials-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 5rem;
+    }
+    .testimonials-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      font-weight: 400;
+      color: var(--white);
+      margin-top: 1rem;
+    }
+    .testimonials-header h2 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: var(--dark);
+      border: 1px solid var(--gray-900);
+      padding: 2.5rem;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: border-color 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(200,164,94,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 0.5rem;
+      right: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.14;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: 0.3rem;
+      color: var(--accent);
+    }
+    .testimonial-stars svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    .testimonial-quote {
+      font-family: var(--font-body);
+      color: var(--gray-300);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+      margin: 0;
+    }
+    .testimonial-author {
+      border-top: 1px solid var(--gray-900);
+      padding-top: 1.25rem;
+    }
+    .testimonial-name {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+    .testimonial-company {
+      color: var(--gray-500);
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    @media (max-width: 1024px) {
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid .testimonial-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonials-grid .testimonial-card:last-child { max-width: 100%; }
+    }
+
     /* ─── STATS BAND ─── */
     .stats-band {
       background: var(--accent);
@@ -749,6 +904,46 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
+    }
+    .careers-empty {
+      background: var(--dark);
+      padding: 3rem 2.5rem;
+      border: 1px solid var(--gray-900);
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      justify-content: center;
+      min-height: 260px;
+    }
+    .careers-empty-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(200,164,94,0.08);
+      border: 1px solid rgba(200,164,94,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin: 0 auto;
+    }
+    .careers-empty-icon svg { width: 24px; height: 24px; }
+    .careers-empty h4 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin: 0;
+    }
+    .careers-empty p {
+      color: var(--gray-300);
+      line-height: 1.75;
+      font-weight: 300;
+      margin: 0 auto;
+      max-width: 42ch;
+      font-size: 0.95rem;
     }
     .career-card {
       background: var(--dark);
@@ -1103,6 +1298,7 @@
       .about-highlights { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="chatbot/chatbot.css">
 </head>
 <body>
 
@@ -1132,7 +1328,10 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg"></div>
+  <video class="hero-bg hero-video" autoplay muted loop playsinline preload="metadata" poster="images/creek-hero-workshop.jpg" aria-hidden="true">
+    <source src="images/hero-workshop.mp4" type="video/mp4">
+  </video>
+  <img class="hero-bg hero-photo" src="images/creek-hero-workshop.jpg" alt="" aria-hidden="true" fetchpriority="high" width="1920" height="1280">
   <div class="hero-overlay"></div>
   <div class="hero-content reveal">
     <div class="hero-badge">Building Your Vision Since 2018</div>
@@ -1190,8 +1389,8 @@
     <div class="about-grid">
       <div class="about-images reveal">
         <div class="about-gold-frame"></div>
-        <img class="about-img-main" src="images/creek-bar-countertop.jpg" alt="Creek Ocean Construction - Custom bar countertop with tile backsplash">
-        <img class="about-img-accent" src="images/creek-kitchen-cabinetry.jpg" alt="Creek Ocean Construction - Custom kitchen cabinetry">
+        <img class="about-img-main" src="images/creek-white-kitchen.jpg" alt="Creek Ocean Construction - Finished white kitchen cabinetry" width="1600" height="1067">
+        <img class="about-img-accent" src="images/creek-office-space.jpg" alt="Creek Ocean Construction - Finished commercial office space" width="1600" height="1067">
       </div>
       <div class="about-text">
         <div class="section-label reveal">About Creek</div>
@@ -1291,6 +1490,13 @@
         <span class="learn-more">Learn More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
     </div>
+    <div class="services-video reveal">
+      <video autoplay muted loop playsinline preload="metadata" poster="images/creek-hero-workshop.jpg" aria-label="Creek team building custom cabinetry in the workshop">
+        <source src="images/cabinetry-process.mp4" type="video/mp4">
+      </video>
+      <img class="services-video-poster" src="images/creek-hero-workshop.jpg" alt="Creek team building custom cabinetry in the workshop" width="1280" height="720">
+      <div class="services-video-caption">Inside our workshop</div>
+    </div>
   </div>
 </section>
 
@@ -1335,10 +1541,10 @@
         <div class="project-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
       </div>
       <div class="project-item reveal reveal-delay-3">
-        <img src="images/salon-brillante.jpg" alt="Halifax Shopping Center Salon">
+        <img src="images/grawood.jpg" alt="Dalhousie University - The Grawood Pub">
         <div class="project-overlay">
-          <span class="project-tag">Salon</span>
-          <h3 class="project-name">Halifax Shopping Center Salon</h3>
+          <span class="project-tag">Hospitality</span>
+          <h3 class="project-name">Dalhousie University &ndash; The Grawood</h3>
         </div>
         <div class="project-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
       </div>
@@ -1370,6 +1576,60 @@
   </div>
 </div>
 
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-label reveal">Client Testimonials</div>
+      <h2 class="reveal reveal-delay-1">Built on trust.<br>Proven by <em>our clients</em>.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <article class="testimonial-card reveal">
+        <div class="testimonial-stars" aria-label="Rated 5 out of 5 stars">
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;Placeholder testimonial &mdash; final copy will be provided by the client. The Creek team delivered our commercial fit-out on schedule with a level of craftsmanship we hadn&rsquo;t experienced elsewhere.&rdquo;</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Client Name</div>
+          <div class="testimonial-company">Company / Project</div>
+        </div>
+      </article>
+      <article class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars" aria-label="Rated 5 out of 5 stars">
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;Placeholder testimonial &mdash; final copy will be provided by the client. From first estimate through final walkthrough, communication was clear and the finished cabinetry exceeded our expectations.&rdquo;</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Client Name</div>
+          <div class="testimonial-company">Company / Project</div>
+        </div>
+      </article>
+      <article class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars" aria-label="Rated 5 out of 5 stars">
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;Placeholder testimonial &mdash; final copy will be provided by the client. Every detail was precise, every deadline honoured. Creek is our go-to for any millwork project going forward.&rdquo;</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Client Name</div>
+          <div class="testimonial-company">Company / Project</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- CAREERS -->
 <section class="careers" id="careers">
   <div class="container">
@@ -1383,39 +1643,12 @@
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
-      <div class="careers-list">
-        <a href="careers.html#cabinet-maker" class="career-card reveal">
-          <div>
-            <div class="career-title">Cabinet Maker</div>
-            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">Custom cabinetry &amp; high-end finishes</div>
-          </div>
-          <div class="career-type">Full-Time</div>
-          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
-        </a>
-        <a href="careers.html#site-supervisor" class="career-card reveal reveal-delay-1">
-          <div>
-            <div class="career-title">Site Supervisor</div>
-            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">General contracting &amp; crew leadership</div>
-          </div>
-          <div class="career-type">Full-Time</div>
-          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
-        </a>
-        <a href="careers.html#project-coordinator" class="career-card reveal reveal-delay-2">
-          <div>
-            <div class="career-title">Project Coordinator</div>
-            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">Cabinetry &amp; millwork coordination</div>
-          </div>
-          <div class="career-type">Full-Time</div>
-          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
-        </a>
-        <a href="careers.html#carpenter" class="career-card reveal reveal-delay-3">
-          <div>
-            <div class="career-title">Carpenters</div>
-            <div style="font-size:0.8rem; color:var(--gray-500); margin-top:0.3rem;">Truro &amp; Colchester County — 5+ years exp.</div>
-          </div>
-          <div class="career-type">Full-Time</div>
-          <div class="career-arrow"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7m10 0v10"/></svg></div>
-        </a>
+      <div class="careers-empty reveal reveal-delay-1">
+        <div class="careers-empty-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h4>No open positions at this time.</h4>
+        <p>We&rsquo;re not currently hiring, but we&rsquo;re always interested in connecting with talented tradespeople. Send us your resume for future opportunities.</p>
       </div>
     </div>
   </div>
@@ -1426,7 +1659,7 @@
   <div class="container">
     <div class="sister-card reveal">
       <div class="sister-img">
-        <img src="images/kp-glass-facade.jpg" alt="KP Glass & Aluminum">
+        <img src="images/kp-welding.jpg" alt="KP Glass &amp; Aluminum team welding in the shop">
       </div>
       <div class="sister-content">
         <div class="section-label">Sister Company</div>
@@ -1641,14 +1874,17 @@
 
   document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
-  // Smooth parallax on hero
-  window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero-bg');
-    if (hero) {
+  // Smooth parallax on hero (applies to both video and photo layers)
+  const heroLayers = document.querySelectorAll('.hero-bg');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (heroLayers.length && !reduceMotion.matches) {
+    window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
-      hero.style.transform = `scale(${1.05 - scrolled * 0.0001}) translateY(${scrolled * 0.3}px)`;
-    }
-  });
+      const t = `scale(${1.05 - scrolled * 0.0001}) translateY(${scrolled * 0.3}px)`;
+      heroLayers.forEach(el => { el.style.transform = t; });
+    }, { passive: true });
+  }
 </script>
+<script defer src="chatbot/chatbot.js"></script>
 </body>
 </html>
