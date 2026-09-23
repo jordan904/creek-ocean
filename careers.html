@@ -79,6 +79,14 @@
       display: none;
       flex-direction: column; gap: 5px;
       cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      margin: -8px;
+    }
+    .nav-hamburger:focus-visible {
+      outline: 2px solid var(--accent-light);
+      outline-offset: 2px;
     }
     .nav-hamburger span {
       width: 24px; height: 2px;
@@ -463,9 +471,9 @@
       <li><a href="careers.html">Careers</a></li>
       <li><a href="index.html#contact" class="nav-cta">Get In Touch</a></li>
     </ul>
-    <div class="nav-hamburger" id="hamburger">
+    <button type="button" class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
@@ -503,7 +511,7 @@
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <p>&copy; 2025 Creek Ocean Construction. All rights reserved. | <a href="index.html">Back to Home</a></p>
+      <p>&copy; 2026 Creek Ocean Construction. All rights reserved. | <a href="index.html">Back to Home</a></p>
       <a href="index.html" class="footer-back">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         Back to Home
@@ -518,8 +526,10 @@ const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
+  const isOpen = navLinks.classList.contains('active');
+  hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   const spans = hamburger.querySelectorAll('span');
-  if (navLinks.classList.contains('active')) {
+  if (isOpen) {
     spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
     spans[1].style.opacity = '0';
     spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
@@ -532,6 +542,7 @@ hamburger.addEventListener('click', () => {
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
     const spans = hamburger.querySelectorAll('span');
     spans[0].style.transform = '';
     spans[1].style.opacity = '';
