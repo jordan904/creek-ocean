@@ -276,7 +276,38 @@ button.creek-chat-alt-action {
 }
 
 /* ─── Lead form ─── */
+/* Slim bar pinned above the lead form and success view */
+.creek-chat-subbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(200, 164, 94, 0.15);
+}
+
+.creek-chat-back {
+  background: none;
+  border: none;
+  padding: 0 0.25rem;
+  min-height: 36px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.creek-chat-back:hover { text-decoration: underline; }
+
+.creek-chat-back:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .creek-chat-lead-form {
+  flex: 1;
+  min-height: 0;
   padding: 1rem 1.2rem;
   display: flex;
   flex-direction: column;
