@@ -3,7 +3,7 @@ main = "worker.js"
 compatibility_date = "2024-01-01"
 
 [vars]
-ALLOWED_ORIGINS = "https://creek.construction,https://jordan904.github.io,http://localhost:3000,http://localhost:3002"
+ALLOWED_ORIGINS = "https://creek.construction,https://www.creek.construction,https://jordan904.github.io,http://localhost:3000,http://localhost:3002"
 
 [ai]
 binding = "AI"

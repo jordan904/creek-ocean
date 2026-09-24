@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Careers | Creek Ocean Construction</title>
-  <meta name="description" content="Careers at Creek Ocean Construction. Send us your resume for future opportunities in cabinetry, carpentry, and construction across Nova Scotia.">
+  <meta name="description" content="Careers at Creek Ocean Construction in Dartmouth, NS. No open positions right now, but we welcome resumes from carpenters, cabinet makers, and tradespeople in HRM.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="canonical" href="https://creek.construction/careers.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Creek Ocean Construction">
+  <meta property="og:url" content="https://creek.construction/careers.html">
+  <meta property="og:title" content="Careers | Creek Ocean Construction">
+  <meta property="og:description" content="Send your resume to Creek Ocean Construction for future opportunities in carpentry, cabinetry, and construction in Halifax and HRM.">
+  <meta property="og:image" content="https://creek.construction/images/og-creek.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
@@ -107,6 +117,7 @@
     .careers-hero-bg {
       position: absolute; inset: 0;
       background: url('images/career-hero.jpg') center/cover no-repeat;
+      background-image: image-set(url('images/career-hero.webp') type('image/webp'), url('images/career-hero.jpg') type('image/jpeg'));
     }
     .careers-hero-overlay {
       position: absolute; inset: 0;
@@ -424,11 +435,20 @@
     .footer-back svg { width: 16px; height: 16px; }
 
     /* ─── REVEAL ─── */
-    .reveal {
-      opacity: 0; transform: translateY(25px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0; transform: translateY(25px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .skip-link {
+      position: absolute; left: -9999px; top: 0;
+      z-index: 10001;
+      background: var(--accent); color: var(--black);
+      padding: 12px 24px; font-weight: 600; font-size: 0.9rem;
+    }
+    .skip-link:focus { left: 0; outline: 3px solid var(--white); outline-offset: 2px; }
     .reveal-delay-1 { transition-delay: 0.15s; }
     .reveal-delay-2 { transition-delay: 0.3s; }
     .reveal-delay-3 { transition-delay: 0.45s; }
@@ -459,16 +479,18 @@
   <link rel="stylesheet" href="chatbot/chatbot.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
 <nav>
   <div class="container">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Creek Ocean Construction" style="height:40px;"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Creek Ocean Construction" width="94" height="40" style="height:40px;width:auto;"></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#projects">Projects</a></li>
-      <li><a href="careers.html">Careers</a></li>
+      <li><a href="careers.html" aria-current="page">Careers</a></li>
+      <li><a href="https://jordan904.github.io/kp-glass/" target="_blank" rel="noopener noreferrer">KP Glass</a></li>
       <li><a href="index.html#contact" class="nav-cta">Get In Touch</a></li>
     </ul>
     <button type="button" class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
@@ -476,6 +498,8 @@
     </button>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <section class="careers-hero">
@@ -506,6 +530,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>

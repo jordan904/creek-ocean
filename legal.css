@@ -8,6 +8,10 @@
   --white: #ffffff;
   --accent: #c8a45e;
   --accent-light: #dfc07a;
+  --accent-dark: #a88a3e;
+  --dark: #222222;
+  --gray-100: #f2f2f2;
+  --gray-900: #2d2d2d;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, sans-serif;
   --container: 860px;

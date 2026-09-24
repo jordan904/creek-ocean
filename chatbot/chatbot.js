@@ -279,6 +279,17 @@
 
   closeBtn.addEventListener("click", closePanel);
 
+  // Lets page buttons (e.g. "Learn More" on service cards) open the chat with a question.
+  window.CreekChat = {
+    ask: function (text) {
+      if (!panel.classList.contains("open")) openPanel();
+      if (!document.getElementById("creek-chat-messages")) renderChatView();
+      var quick = document.getElementById("creek-chat-quick-options");
+      if (quick) quick.innerHTML = "";
+      if (!isSending) sendUserMessage(text);
+    },
+  };
+
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && panel.classList.contains("open")) {
       closePanel();

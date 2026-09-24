@@ -1,0 +1,22 @@
+# Creek Ocean Construction
+User-agent: *
+Allow: /
+
+# Search and AI assistant crawlers are explicitly welcome
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+Allow: /
+
+Sitemap: https://creek.construction/sitemap.xml
