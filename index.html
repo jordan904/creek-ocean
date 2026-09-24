@@ -1081,6 +1081,7 @@
       align-items: center;
       justify-content: center;
     }
+    .lightbox-figure img.is-loading { opacity: 0.35; }
     .lightbox-figure img {
       max-width: 100%;
       max-height: 100%;
@@ -1554,8 +1555,6 @@
     .faq {
       padding: 0 0 7rem;
       background: var(--black);
-      content-visibility: auto;
-      contain-intrinsic-size: auto 1200px;
     }
     .faq-header {
       text-align: center;
@@ -2469,11 +2468,11 @@
   // ─── PROJECT LIGHTBOX ───
   (function () {
     var PROJECTS = [
-      { src: 'images/alton-flex.jpg', title: 'Alton Flex Co-Working Space', tag: 'Commercial' },
-      { src: 'images/halifax-shopping-centre.jpg', title: 'Halifax Shopping Centre', tag: 'Retail' },
-      { src: 'images/nslc-the-port.jpg', title: 'NSLC The Port', tag: 'Hospitality' },
-      { src: 'images/banook-boat-club.jpg', title: 'Banook Boat Club', tag: 'Recreation' },
-      { src: 'images/grawood.jpg', title: 'Dalhousie University – The Grawood', tag: 'Hospitality' },
+      { src: 'images/alton-flex.webp', title: 'Alton Flex Co-Working Space', tag: 'Commercial' },
+      { src: 'images/halifax-shopping-centre.webp', title: 'Halifax Shopping Centre', tag: 'Retail' },
+      { src: 'images/nslc-the-port.webp', title: 'NSLC The Port', tag: 'Hospitality' },
+      { src: 'images/banook-boat-club.webp', title: 'Banook Boat Club', tag: 'Recreation' },
+      { src: 'images/grawood.webp', title: 'Dalhousie University – The Grawood', tag: 'Hospitality' },
     ];
 
     var lightbox = document.getElementById('lightbox');
@@ -2488,13 +2487,20 @@
 
     var index = 0;
     var isOpen = false;
+    lbImg.addEventListener('load', function () { lbImg.classList.remove('is-loading'); });
+    lbImg.addEventListener('error', function () { lbImg.classList.remove('is-loading'); });
     var lastFocused = null;
 
     function show(i) {
       var total = PROJECTS.length;
       index = (i + total) % total;
       var p = PROJECTS[index];
-      lbImg.src = p.src;
+      if (lbImg.getAttribute('src') !== p.src) {
+        lbImg.classList.add('is-loading');
+        lbImg.src = p.src;
+      }
+      // Warm the neighbours so arrowing through is instant
+      [index + 1, index - 1].forEach(function (n) { var im = new Image(); im.src = PROJECTS[(n + total) % total].src; });
       lbImg.alt = p.title;
       lbTitle.textContent = p.title;
       lbCounter.textContent = p.tag + ' · Project ' + (index + 1) + ' of ' + total;
