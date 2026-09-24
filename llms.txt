@@ -27,6 +27,6 @@
 
 ## Pages
 - [Home](https://creek.construction/): services, workshop video, featured projects, FAQ, and contact form
-- [Careers](https://creek.construction/careers.html)
-- [Privacy Policy](https://creek.construction/privacy-policy.html)
-- [Terms of Service](https://creek.construction/terms-of-service.html)
+- [Careers](https://creek.construction/careers)
+- [Privacy Policy](https://creek.construction/privacy-policy)
+- [Terms of Service](https://creek.construction/terms-of-service)
