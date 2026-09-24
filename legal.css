@@ -58,7 +58,8 @@ nav .container {
   display: flex; align-items: center; justify-content: space-between;
   padding-top: 1rem; padding-bottom: 1rem;
 }
-.nav-logo img { height: 40px; width: auto; }
+.nav-logo img { height: 58px; width: auto; }
+picture { display: contents; }
 .nav-back {
   display: flex; align-items: center; gap: 0.4rem;
   min-height: 44px;

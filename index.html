@@ -346,7 +346,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
-      padding: 1.8rem 3rem;
+      padding: 1.2rem 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -361,6 +361,12 @@
       -webkit-backdrop-filter: blur(20px);
       padding: 1rem 3rem;
       border-bottom: 1px solid rgba(248, 216, 69,0.1);
+    }
+    .nav-logo img { height: 68px; width: auto; }
+    nav.scrolled .nav-logo img { height: 52px; }
+    footer .nav-logo img { height: 76px; }
+    @media (prefers-reduced-motion: no-preference) {
+      .nav-logo img { transition: height 0.3s ease; }
     }
     .nav-logo {
       font-family: var(--font-display);
@@ -1739,6 +1745,8 @@
       }
       .nav-links.active a { font-size: 1.2rem; }
       .nav-hamburger { display: flex; }
+      .nav-logo img { height: 50px; }
+      nav.scrolled .nav-logo img { height: 44px; }
       .hero-overlay { background: rgba(10,10,10,0.7); }
       .hero-badge { background: rgba(10,10,10,0.6); backdrop-filter: blur(12px); }
       .hero h1 { font-size: clamp(2.2rem, 8vw, 3.5rem); }
@@ -1768,7 +1776,7 @@
 
 <!-- NAVIGATION -->
 <nav id="nav">
-  <a href="#" class="nav-logo"><img src="images/logo.png" alt="Creek Ocean Construction" width="94" height="40" style="height:40px;width:auto;"></a>
+  <a href="#" class="nav-logo"><picture><source srcset="images/creek-logo-transparent.webp" type="image/webp"><img src="images/creek-logo-transparent.png" alt="Creek Ocean Construction" width="129" height="68"></picture></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -2323,7 +2331,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="nav-logo"><img src="images/logo.png" alt="Creek Ocean Construction" width="94" height="40" style="height:40px;width:auto;" loading="lazy" decoding="async"></div>
+        <div class="nav-logo"><picture><source srcset="images/creek-logo-transparent.webp" type="image/webp"><img src="images/creek-logo-transparent.png" alt="Creek Ocean Construction" width="144" height="76" loading="lazy" decoding="async"></picture></div>
         <p>Premium remodelling, cabinetry, and custom carpentry for residential and commercial spaces across Halifax &amp; HRM. Craftsmanship runs deep in our roots.</p>
       </div>
       <div class="footer-col">

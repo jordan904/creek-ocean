@@ -68,7 +68,8 @@
     nav .container {
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo img { height: 40px; }
+    .nav-logo img { height: 64px; width: auto; }
+    picture { display: contents; }
     .nav-links {
       display: flex; align-items: center;
       gap: 2.5rem; list-style: none;
@@ -477,6 +478,7 @@
       }
       .nav-links.active a { font-size: 1.2rem; }
       .nav-hamburger { display: flex; z-index: 1001; }
+      .nav-logo img { height: 50px; }
       .job-header { flex-direction: column; }
       .job-body { grid-template-columns: 1fr; }
       .job-sidebar { position: static; }
@@ -491,7 +493,7 @@
 <!-- NAV -->
 <nav>
   <div class="container">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Creek Ocean Construction" width="94" height="40" style="height:40px;width:auto;"></a>
+    <a href="index.html" class="nav-logo"><picture><source srcset="images/creek-logo-transparent.webp" type="image/webp"><img src="images/creek-logo-transparent.png" alt="Creek Ocean Construction" width="122" height="64"></picture></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#services">Services</a></li>
