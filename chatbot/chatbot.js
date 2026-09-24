@@ -155,7 +155,7 @@
       .then(function (data) {
         var typingEl = document.getElementById("creek-chat-typing");
         if (typingEl) typingEl.remove();
-        var reply = data.reply || "Sorry, I didn't catch that — could you rephrase?";
+        var reply = data.reply || "Sorry, I didn't catch that. Could you rephrase?";
         messages.push({ role: "assistant", content: reply });
         appendBubble(messagesEl, "assistant", reply);
       })
@@ -240,7 +240,7 @@
   function renderLeadSuccess() {
     body.innerHTML =
       '<div class="creek-chat-lead-success">' +
-      "<p>Thanks — we've got your info and someone from our team will be in touch soon.</p>" +
+      "<p>Thanks! We've got your info and someone from our team will be in touch soon.</p>" +
       '<button type="button" class="creek-chat-alt-action" id="creek-chat-back-btn-2">← Back to chat</button>' +
       "</div>";
     document.getElementById("creek-chat-back-btn-2").addEventListener("click", renderChatView);
