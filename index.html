@@ -1760,7 +1760,7 @@
       .about-highlights { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="stylesheet" href="chatbot/chatbot.css?v=3">
+  <link rel="stylesheet" href="chatbot/chatbot.css?v=4">
 </head>
 <body>
 
@@ -2600,17 +2600,10 @@
         type: form.type.value || 'General inquiry',
         description: form.details.value.trim() || 'No additional project details provided.',
         company: form['company-url'].value,
+        source: 'Website contact form',
       };
 
-      fetch('https://creek-chatbot.jordan-574.workers.dev/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-        .then((res) => {
-          if (!res.ok) throw new Error('bad response');
-          return res.json();
-        })
+      (window.CreekChat ? window.CreekChat.sendLead(payload) : Promise.reject(new Error('Form not ready')))
         .then(() => {
           btn.textContent = 'Request Sent!';
           btn.style.background = '#00d4aa';
@@ -2626,6 +2619,6 @@
     });
   }
 </script>
-<script defer src="chatbot/chatbot.js?v=3"></script>
+<script defer src="chatbot/chatbot.js?v=4"></script>
 </body>
 </html>

@@ -80,9 +80,6 @@ export default {
       if (url.pathname === "/chat" && request.method === "POST") {
         return await handleChat(request, env, corsHeaders, ctx);
       }
-      if (url.pathname === "/lead" && request.method === "POST") {
-        return await handleLead(request, env, corsHeaders);
-      }
       return json({ error: "Not found" }, 404, corsHeaders);
     } catch (err) {
       console.error("Unhandled error:", err && err.stack ? err.stack : err);
@@ -165,51 +162,4 @@ async function handleChat(request, env, corsHeaders, ctx) {
   }
 
   return json({ reply }, 200, corsHeaders);
-}
-
-async function handleLead(request, env, corsHeaders) {
-  const body = await request.json();
-
-  if (body.company) {
-    return json({ ok: true }, 200, corsHeaders);
-  }
-
-  const name = String(body.name || "").slice(0, 200).trim();
-  const email = String(body.email || "").slice(0, 200).trim();
-  const phone = String(body.phone || "").slice(0, 50).trim();
-  const type = String(body.type || "General inquiry").slice(0, 100).trim();
-  const description = String(body.description || "").slice(0, 2000).trim();
-  const transcript = String(body.transcript || "").slice(0, 8000);
-
-  if (!name || !email || !description) {
-    return json({ error: "Name, email, and a brief description are required" }, 400, corsHeaders);
-  }
-
-  const isCareers = /career|resume/i.test(type);
-  const accessKey = isCareers ? env.WEB3FORMS_ACCESS_KEY_CAREERS : env.WEB3FORMS_ACCESS_KEY_GENERAL;
-
-  const web3formsResponse = await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({
-      access_key: accessKey,
-      subject: `New chat lead: ${type} | ${name}`,
-      from_name: "Creek Assistant",
-      replyto: email,
-      Name: name,
-      Email: email,
-      Phone: phone || "Not provided",
-      "Inquiry type": type,
-      Description: description,
-      Conversation: transcript || "(no chat messages before this form was submitted)",
-    }),
-  });
-
-  const result = await web3formsResponse.json().catch(() => null);
-  if (!web3formsResponse.ok || !result || !result.success) {
-    console.error("Web3Forms failed:", web3formsResponse.status, JSON.stringify(result));
-    return json({ error: "Could not send your message. Please email us directly." }, 502, corsHeaders);
-  }
-
-  return json({ ok: true }, 200, corsHeaders);
 }

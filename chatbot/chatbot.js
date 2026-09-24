@@ -15,6 +15,52 @@
     { label: "Contact Us", action: "lead-form" },
   ];
 
+
+  // Lead emails go straight from the visitor's browser to Web3Forms. Sending
+  // them from the Cloudflare Worker failed: Web3Forms rate-limits Cloudflare's
+  // shared outbound IPs. Web3Forms access keys are public by design (they can
+  // only deliver messages to the inbox they were created for), so they are safe
+  // in page code; restrict them to the site's domains in the Web3Forms dashboard.
+  var WEB3FORMS_URL = "https://api.web3forms.com/submit";
+  var WEB3FORMS_KEYS = {
+    general: "062ce442-9f41-4bea-8df8-76391c21ff5a",
+    careers: "c360b243-238a-45a1-a99d-2e45090f805f",
+  };
+
+  function clip(value, max) {
+    return String(value || "").trim().slice(0, max);
+  }
+
+  // lead: { name, email, phone, type, description, transcript, company, source }
+  function sendLead(lead) {
+    if (lead.company) return Promise.resolve(); // honeypot filled: quietly drop
+    var type = clip(lead.type, 100) || "General inquiry";
+    var name = clip(lead.name, 200);
+    var body = {
+      access_key: /career|resume/i.test(type) ? WEB3FORMS_KEYS.careers : WEB3FORMS_KEYS.general,
+      subject: "New website lead: " + type + " | " + name,
+      from_name: "Creek Assistant",
+      replyto: clip(lead.email, 200),
+      Source: lead.source || "Chat assistant",
+      Name: name,
+      Email: clip(lead.email, 200),
+      Phone: clip(lead.phone, 50) || "Not provided",
+      "Inquiry type": type,
+      Description: clip(lead.description, 2000) || "No additional details provided.",
+      Conversation: clip(lead.transcript, 8000) || "(no chat messages before this form was submitted)",
+      botcheck: "",
+    };
+    return fetch(WEB3FORMS_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(body),
+    }).then(function (res) {
+      return res.json().catch(function () { return null; }).then(function (data) {
+        if (!res.ok || !data || !data.success) throw new Error((data && data.message) || "Send failed");
+      });
+    });
+  }
+
   var messages = [];
   var hasOpenedBefore = false;
   var isSending = false;
@@ -217,15 +263,7 @@
       submitBtn.disabled = true;
       submitBtn.textContent = "Sending…";
 
-      fetch(CHAT_API_BASE + "/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error("bad response");
-          return res.json();
-        })
+      sendLead(payload)
         .then(function () {
           renderLeadSuccess();
         })
@@ -281,6 +319,7 @@
 
   // Lets page buttons (e.g. "Learn More" on service cards) open the chat with a question.
   window.CreekChat = {
+    sendLead: sendLead,
     ask: function (text) {
       if (!panel.classList.contains("open")) openPanel();
       if (!document.getElementById("creek-chat-messages")) renderChatView();
