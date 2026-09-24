@@ -1779,7 +1779,7 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <video class="hero-bg hero-video" muted loop playsinline preload="none" poster="images/creek-hero-workshop.webp" aria-hidden="true">
-    <source src="images/hero-workshop.mp4" type="video/mp4">
+    <source src="images/hero-workshop-v2.mp4" type="video/mp4">
   </video>
   <picture><source srcset="images/creek-hero-workshop.webp" type="image/webp"><img class="hero-bg hero-photo" src="images/creek-hero-workshop.jpg" alt="" aria-hidden="true" fetchpriority="high" width="1206" height="660"></picture>
   <div class="hero-overlay"></div>
@@ -1942,7 +1942,7 @@
     </div>
     <div class="services-video reveal">
       <video muted loop playsinline preload="none" poster="images/creek-hero-workshop.webp" aria-label="Creek team building custom cabinetry in the workshop" data-autoplay-visible>
-        <source src="images/cabinetry-process.mp4" type="video/mp4">
+        <source src="images/cabinetry-process-v2.mp4" type="video/mp4">
       </video>
       <img class="services-video-poster" src="images/creek-hero-workshop.jpg" alt="Creek team building custom cabinetry in the workshop" width="1206" height="660" loading="lazy" decoding="async">
       <div class="services-video-caption">Inside our workshop</div>
@@ -2368,12 +2368,17 @@
   // Hero zoom starts on the first frame (no loading screen)
   requestAnimationFrame(() => document.querySelector('.hero').classList.add('loaded'));
 
-  // Hero video only loads where it is shown (hidden on phones and for reduced motion)
+  // Hero video only loads where it is shown (hidden on phones and for reduced
+  // motion), and only after the rest of the page has finished loading, so the
+  // poster photo shows first and the video never holds up the page.
   const heroVideo = document.querySelector('.hero-video');
-  if (heroVideo && getComputedStyle(heroVideo).display !== 'none') {
+  const startHeroVideo = () => {
+    if (!heroVideo || getComputedStyle(heroVideo).display === 'none') return;
     heroVideo.preload = 'auto';
     heroVideo.play().catch(() => {});
-  }
+  };
+  if (document.readyState === 'complete') startHeroVideo();
+  else window.addEventListener('load', startHeroVideo, { once: true });
 
   // Nav scroll
   const nav = document.getElementById('nav');
@@ -2412,12 +2417,14 @@
   // Workshop video: only download and play while it is on screen
   const workshopVideo = document.querySelector('video[data-autoplay-visible]');
   if (workshopVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    new IntersectionObserver((entries) => {
+    const watchWorkshopVideo = () => new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) workshopVideo.play().catch(() => {});
         else workshopVideo.pause();
       });
     }, { threshold: 0.25 }).observe(workshopVideo);
+    if (document.readyState === 'complete') watchWorkshopVideo();
+    else window.addEventListener('load', watchWorkshopVideo, { once: true });
   }
 
   // "Learn More" on service cards opens the chat assistant with that question
