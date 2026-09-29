@@ -36,3 +36,10 @@
 
 /legal.css
   Cache-Control: public, max-age=31536000
+
+# Review sites only: keep the pages.dev addresses out of search results.
+# The real domains are unaffected, so nothing changes at launch.
+https://creek-ocean.pages.dev/*
+  X-Robots-Tag: noindex
+https://:hash.creek-ocean.pages.dev/*
+  X-Robots-Tag: noindex
