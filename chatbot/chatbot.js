@@ -89,7 +89,7 @@
     '<div class="creek-chat-header">' +
     "<div>" +
     "<h2>Creek Assistant</h2>" +
-    "<p>Usually replies in a few minutes</p>" +
+    "<p>Automated assistant — for general questions. For project-specific advice, contact our team.</p>" +
     "</div>" +
     '<button type="button" class="creek-chat-header-close" aria-label="Close chat"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>' +
     "</div>" +
