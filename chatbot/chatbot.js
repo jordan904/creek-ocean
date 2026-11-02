@@ -28,9 +28,12 @@
     return String(value || "").trim().slice(0, max);
   }
 
-  // lead: { name, email, phone, type, description, transcript, company, source }
+  // lead: { name, email, phone, type, description, transcript, trap, source }
   function sendLead(lead) {
-    if (lead.company) return Promise.resolve(); // honeypot filled: quietly drop
+    // Spam trap filled: quietly drop. Its field must never be named or labelled
+    // like company, website or URL: browser autofill fills those, which silently
+    // loses real leads.
+    if (lead.trap) return Promise.resolve();
     var type = clip(lead.type, 100) || "General inquiry";
     var name = clip(lead.name, 200);
     var body = {
@@ -234,7 +237,7 @@
       "<option>Existing project</option>" +
       "</select></div>" +
       '<div><label for="creek-lead-desc">Tell us a bit about what you need</label><textarea id="creek-lead-desc" name="description" required></textarea></div>' +
-      '<div class="creek-chat-lead-honeypot"><label for="creek-lead-company">Company</label><input id="creek-lead-company" name="company" type="text" tabindex="-1" aria-hidden="true" autocomplete="off"></div>' +
+      '<div class="creek-chat-lead-honeypot"><label for="creek-lead-check">Leave this field empty</label><input id="creek-lead-check" name="check_field" type="text" tabindex="-1" aria-hidden="true" autocomplete="off"></div>' +
       '<button type="submit" class="creek-chat-lead-submit">Send to our team</button>' +
       "</form>";
 
@@ -252,7 +255,7 @@
         phone: form.phone.value.trim(),
         type: form.type.value,
         description: form.description.value.trim(),
-        company: form.company.value,
+        trap: form.check_field.value,
         transcript: messages.map(function (m) { return m.role + ": " + m.content; }).join("\n"),
       };
 

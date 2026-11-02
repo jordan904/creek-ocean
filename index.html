@@ -1955,7 +1955,7 @@
       .about-highlights { grid-template-columns: 1fr; }
     }
   </style>
-  <link rel="stylesheet" href="chatbot/chatbot.css?v=7">
+  <link rel="stylesheet" href="chatbot/chatbot.css?v=8">
 </head>
 <body>
 
@@ -2502,8 +2502,8 @@
       <div class="contact-form reveal reveal-delay-2">
         <form id="contact-form">
           <div class="form-hp" aria-hidden="true">
-            <label for="company-url">Company URL</label>
-            <input type="text" id="company-url" name="company-url" tabindex="-1" autocomplete="off">
+            <label for="check-field">Leave this field empty</label>
+            <input type="text" id="check-field" name="check-field" tabindex="-1" autocomplete="off">
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -3041,7 +3041,7 @@
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const form = e.target;
-      if (form['company-url'].value) return;
+      if (form['check-field'].value) return;
 
       const btn = form.querySelector('.form-submit');
       const errorEl = document.getElementById('form-error');
@@ -3056,7 +3056,7 @@
         phone: form.phone.value.trim(),
         type: form.type.value || 'General inquiry',
         description: form.details.value.trim() || 'No additional project details provided.',
-        company: form['company-url'].value,
+        trap: form['check-field'].value,
         source: 'Website contact form',
       };
 
@@ -3076,6 +3076,6 @@
     });
   }
 </script>
-<script defer src="chatbot/chatbot.js?v=7"></script>
+<script defer src="chatbot/chatbot.js?v=8"></script>
 </body>
 </html>
