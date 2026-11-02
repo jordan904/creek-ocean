@@ -22,10 +22,7 @@
   // only deliver messages to the inbox they were created for), so they are safe
   // in page code; restrict them to the site's domains in the Web3Forms dashboard.
   var WEB3FORMS_URL = "https://api.web3forms.com/submit";
-  var WEB3FORMS_KEYS = {
-    general: "062ce442-9f41-4bea-8df8-76391c21ff5a",
-    careers: "c360b243-238a-45a1-a99d-2e45090f805f",
-  };
+  var WEB3FORMS_KEY = "062ce442-9f41-4bea-8df8-76391c21ff5a";
 
   function clip(value, max) {
     return String(value || "").trim().slice(0, max);
@@ -37,7 +34,7 @@
     var type = clip(lead.type, 100) || "General inquiry";
     var name = clip(lead.name, 200);
     var body = {
-      access_key: /career|resume/i.test(type) ? WEB3FORMS_KEYS.careers : WEB3FORMS_KEYS.general,
+      access_key: WEB3FORMS_KEY,
       subject: "New website lead: " + type + " | " + name,
       from_name: "Creek Assistant",
       replyto: clip(lead.email, 200),
